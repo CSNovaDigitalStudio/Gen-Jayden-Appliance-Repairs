@@ -46,3 +46,28 @@ document.getElementById("progressBar").style.width=(winScroll/height)*100+"%"
 function bookWhatsApp(){
 window.open("https://wa.me/27681915286?text=Hello%20I%20need%20appliance%20repair")
 }
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+e.preventDefault()
+
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+let problem=document.getElementById("problem").value
+
+let msg=`Hello I need appliance repair.%0AName: ${name}%0APhone: ${phone}%0AProblem: ${problem}`
+
+window.open(`https://wa.me/27681915286?text=${msg}`,"_blank")
+})
+
+let observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll("section").forEach(sec=>{
+sec.classList.add("fade")
+observer.observe(sec)
+})
